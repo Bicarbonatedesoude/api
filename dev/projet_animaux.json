@@ -1,0 +1,136 @@
+{
+    "animaux": [
+      {
+        "nom": "Pogo",
+        "type": "Chien",
+        "race": "Teckel",
+        "age": 3,
+        "poids": 8,
+        "sterilise": false,
+        "dateNaissance": "2021-05-15",
+        "historiqueVaccins": [
+          {
+            "vaccin": "Rage",
+            "dateVaccin": "2023-01-10"
+          },
+          {
+            "vaccin": "Parvovirose",
+            "dateVaccin": "2023-06-15"
+          }
+        ],
+        "observations": "Pogo est très amical et aime jouer."
+      },
+      {
+        "nom": "Tesla",
+        "type": "Chien",
+        "race": "Teckel",
+        "age": 2,
+        "poids": 16,
+        "sterilise": false,
+        "dateNaissance": "2022-08-20",
+        "historiqueVaccins": [
+          {
+            "vaccin": "Rage",
+            "dateVaccin": "2023-02-12"
+          }
+        ],
+        "observations": "Tesla est très affectueuse et adore les câlins."
+      },
+      {
+        "nom": "Saucisse",
+        "type": "Chien",
+        "race": "Teckel",
+        "age": 1,
+        "poids": 18,
+        "sterilise": false,
+        "dateNaissance": "2023-03-05",
+        "historiqueVaccins": [
+          {
+            "vaccin": "Rage",
+            "dateVaccin": "2023-09-01"
+          }
+        ],
+        "observations": "Saucisse est curieuse et adore explorer."
+      },
+      {
+        "nom": "Peppa Cochon",
+        "type": "Cochon",
+        "race": "Non spécifiée",
+        "age": 1,
+        "poids": 14,
+        "sterilise": false,
+        "dateNaissance": "2023-09-01",
+        "historiqueVaccins": [
+          {
+            "vaccin": "Rage",
+            "dateVaccin": "2023-09-01"
+          }
+        ],
+        "observations": "Peppa est très joueuse."
+      },
+      {
+        "nom": "George Cochon",
+        "type": "Cochon",
+        "race": "Non spécifiée",
+        "age": 1,
+        "poids": 13,
+        "sterilise": false,
+        "dateNaissance": "2023-09-01",
+        "historiqueVaccins": [
+          {
+            "vaccin": "Rage",
+            "dateVaccin": "2023-09-01"
+          }
+        ],
+        "observations": "George aime passer du temps avec Peppa."
+      },
+      {
+        "nom": "Charbon",
+        "type": "Chien",
+        "race": "Teckel",
+        "age": 2,
+        "poids": 11,
+        "sterilise": false,
+        "dateNaissance": "2022-08-20",
+        "historiqueVaccins": [
+          {
+            "vaccin": "Rage",
+            "dateVaccin": "2023-09-01"
+          }
+        ],
+        "observations": "Charbon est très affectueux."
+      },
+      {
+        "nom": "Holy Burger",
+        "type": "Chien",
+        "race": "Teckel",
+        "age": 2,
+        "poids": 16,
+        "sterilise": false,
+        "dateNaissance": "2022-08-20",
+        "historiqueVaccins": [
+          {
+            "vaccin": "Rage",
+            "dateVaccin": "2023-09-01"
+          }
+        ],
+        "observations": "Holy Burger aime jouer."
+      },
+      {         
+        "nom": "Le Grinch",
+        "type": "Chien",
+        "race": "Teckel",
+        "age": 3,
+        "poids": 15,
+        "sterilise": true,
+        "dateNaissance": "2021-05-15",
+        "historiqueVaccins": [
+          {
+            "vaccin": "Rage",
+            "dateVaccin": "2023-09-01"
+          }
+        ],
+        "observations": "Le Grinch est un peu timide mais amical."
+      }
+    ]  
+  }
