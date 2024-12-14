@@ -1,6 +1,5 @@
 /**
  * Point d'entrée principal pour l'application.
- * Configuration du serveur Express et démarrage.
  */
 
 import app from './src/server';

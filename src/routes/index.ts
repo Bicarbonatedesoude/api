@@ -29,12 +29,10 @@ animalRouter.post(Paths.Animal.Add, validateAnimal, AnimalRoutes.add);
 animalRouter.put(Paths.Animal.Update, validateAnimal, AnimalRoutes.update);
 animalRouter.delete(Paths.Animal.Delete, validate(['id', 'string', 'params']), AnimalRoutes.delete);
 
-// Ajout des routes pour les animaux dans l'API principale
 apiRouter.use(Paths.Animal.Base, animalRouter);
 
-// Route de base pour vérifier le statut de l'API
 apiRouter.get(Paths.Base, (req: Request, res: Response) => {
-    res.json({ message: "Bienvenue sur l'API 2e Chance!" });
+    res.json({ message: "Bienvenue sur l'API !" });
 });
 
 // **** Export default **** //

@@ -1,10 +1,4 @@
-/**
- * Routes pour gérer les opérations liées aux animaux.
- */
-
-import { Router } from 'express';
 import AnimalService from '../services/AnimalService';
-import Paths from '../common/Paths';
 import HttpStatusCodes from '../common/HttpStatusCodes';
 import { IAnimal } from '@src/models/Animal';
 import { IReq, IRes } from './common/types';

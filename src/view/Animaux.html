@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des Animaux</title>
+</head>
+<body>
+  <h1>Gestion des Animaux</h1>
+  <div>
+    <h2>Ajouter un Animal</h2>
+    <form id="animal-form">
+      <input type="text" id="animal-name" placeholder="Nom de l'animal" required />
+      <button type="submit">Ajouter</button>
+    </form>
+    <p id="error-message"></p>
+  </div>
+  <h2>Liste des Animaux</h2>
+  <ul id="animal-list"></ul>
+  <script>
+    const animalForm = document.getElementById('animal-form');
+    const animalNameInput = document.getElementById('animal-name');
+    const animalList = document.getElementById('animal-list');
+    const errorMessage = document.getElementById('error-message');
+    let animaux = [];
+    animalForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const animalName = animalNameInput.value.trim();
+      if (!animalName) {
+        errorMessage.textContent = "Veuillez entrer un nom valide.";
+        return;
+      }
+      animaux.push(animalName);
+      animalNameInput.value = "";
+      errorMessage.textContent = "";
+      displayAnimals();
+    });
+    function displayAnimals() {
+      animalList.innerHTML = "";
+      animaux.forEach((animal, index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${index + 1}. ${animal}`;
+        animalList.appendChild(listItem);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 import jsonfile from 'jsonfile';
-import { IAnimal } from '../models/Animal'; // Assure-toi que le chemin est correct
+import { IAnimal } from '../models/Animal';
 
 // **** Variables **** //
 const NOM_FICHIER_BD = 'base_de_donnees.json';
@@ -19,7 +19,7 @@ async function ouvrirBaseDeDonnees(): Promise<IBd> {
     return await jsonfile.readFile(__dirname + '/' + NOM_FICHIER_BD) as IBd;
   } catch (erreur) {
     console.error('Erreur lors de la lecture du fichier de base de données :', erreur);
-    throw erreur; // Rejette l'erreur pour que l'appelant puisse la gérer
+    throw erreur;
   }
 }
 
@@ -31,7 +31,7 @@ async function enregistrerBaseDeDonnees(bd: IBd): Promise<void> {
     await jsonfile.writeFile(__dirname + '/' + NOM_FICHIER_BD, bd);
   } catch (erreur) {
     console.error('Erreur lors de l\'écriture dans le fichier de base de données :', erreur);
-    throw erreur; // Rejette l'erreur pour que l'appelant puisse la gérer
+    throw erreur; 
   }
 }
 

@@ -1,0 +1,118 @@
+{
+    "Base": "/",
+    "Animal": {
+      "Base": "/animaux",
+      "Routes": {
+        "Get": {
+          "method": "GET",
+          "path": "/",
+          "description": "Récupère la liste de tous les animaux.",
+          "params": null,
+          "response": {
+            "status": 200,
+            "body": [
+              {
+                "id": 1,
+                "nom": "Rex",
+                "poids": 12.5,
+                "type": "Chien"
+              }
+            ]
+          }
+        },
+        "GetByNom": {
+          "method": "GET",
+          "path": "/nom/:nom",
+          "description": "Récupère un ou plusieurs animaux en fonction de leur nom.",
+          "params": {
+            "nom": "Nom de l'animal (string)"
+          },
+          "response": {
+            "status": 200,
+            "body": [
+              {
+                "id": 1,
+                "nom": "Rex",
+                "poids": 12.5,
+                "type": "Chien"
+              }
+            ]
+          }
+        },
+        "GetByPoids": {
+          "method": "GET",
+          "path": "/poids/:min/:max",
+          "description": "Récupère les animaux ayant un poids compris entre min et max.",
+          "params": {
+            "min": "Poids minimum (number)",
+            "max": "Poids maximum (number)"
+          },
+          "response": {
+            "status": 200,
+            "body": [
+              {
+                "id": 2,
+                "nom": "Mimi",
+                "poids": 8.4,
+                "type": "Chat"
+              }
+            ]
+          }
+        },
+        "Add": {
+          "method": "POST",
+          "path": "/",
+          "description": "Ajoute un nouvel animal dans la base de données.",
+          "params": {
+            "nom": "Nom de l'animal (string, obligatoire)",
+            "poids": "Poids de l'animal (number, obligatoire)",
+            "type": "Type de l'animal (string, obligatoire)"
+          },
+          "response": {
+            "status": 201,
+            "body": {
+              "message": "Animal ajouté avec succès.",
+              "animal": {
+                "id": 3,
+                "nom": "Toby",
+                "poids": 10.2,
+                "type": "Lapin"
+              }
+            }
+          }
+        },
+        "Update": {
+          "method": "PUT",
+          "path": "/",
+          "description": "Met à jour les informations d'un animal existant.",
+          "params": {
+            "id": "Identifiant unique de l'animal (obligatoire)",
+            "nom": "Nom de l'animal (string, optionnel)",
+            "poids": "Poids de l'animal (number, optionnel)",
+            "type": "Type de l'animal (string, optionnel)"
+          },
+          "response": {
+            "status": 200,
+            "body": {
+              "message": "Animal mis à jour avec succès."
+            }
+          }
+        },
+        "Delete": {
+          "method": "DELETE",
+          "path": "/:id",
+          "description": "Supprime un animal de la base de données.",
+          "params": {
+            "id": "Identifiant unique de l'animal à supprimer (number)"
+          },
+          "response": {
+            "status": 200,
+            "body": {
+              "message": "Animal supprimé avec succès."
+            }
+          }
+        }
+      }
+    }
+  }
+  

@@ -9,15 +9,14 @@ import dotenv from 'dotenv';
 
 import 'express-async-errors';
 
-import BaseRouter from './routes'; // Routes de base
-import AnimalRoutes from './routes/AnimalRoutes'; // Import des routes pour les animaux
+import BaseRouter from './routes'; 
+import AnimalRoutes from './routes/AnimalRoutes'; 
 import Paths from './common/Paths';
 import EnvVars from './common/EnvVars';
 import HttpStatusCodes from './common/HttpStatusCodes';
 import { RouteError } from './common/classes';
 import { NodeEnvs } from './common/misc';
 
-// Charger les variables d'environnement
 dotenv.config();
 
 // **** Variables **** //
@@ -25,32 +24,27 @@ const app = express();
 
 // **** Configuration Middleware **** //
 
-// Support pour JSON et URL Encoded
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Analyse des cookies avec la clé définie dans le fichier .env
 app.use(cookieParser(EnvVars.CookieProps.Secret));
 
-// Configuration CORS pour autoriser l'API depuis l'URL donnée
 app.use(
   cors({
-    origin: ['http://localhost:3008'], // Autoriser cette origine uniquement
+    origin: ['http://localhost:3008'], 
     credentials: true, 
   })
 );
 
-// Middleware pour logger les requêtes HTTP en mode Développement
+
 if (EnvVars.NodeEnv === NodeEnvs.Dev.valueOf()) {
   app.use(morgan('dev'));
 }
 
-// Middleware de sécurité avec Helmet en mode Production
 if (EnvVars.NodeEnv === NodeEnvs.Production.valueOf()) {
   app.use(helmet());
 }
 
-// Middleware global pour logger chaque requête
 app.use((req, _, next) => {
   logger.info(`[${req.method}] ${req.path}`);
   next();
@@ -58,8 +52,8 @@ app.use((req, _, next) => {
 
 // **** Routes **** //
 
-app.use(Paths.Base, BaseRouter); // Routes principales
-app.use(Paths.Animal.Base, AnimalRoutes); // Routes pour les animaux avec configuration dynamique
+app.use(Paths.Base, BaseRouter);
+app.use(Paths.Animal.Base, BaseRouter);
 
 app.use('/api', BaseRouter);
 // **** Gestionnaire d'erreurs global **** //
@@ -90,10 +84,9 @@ app.use(
 
 // **** Lancer le serveur **** //
 
-const PORT = EnvVars.Port || 3008; // Utiliser le port configuré ou 3000 par défaut
+const PORT = EnvVars.Port || 3008; 
 app.listen(PORT, () => {
   logger.info(`Server running on port ${PORT}`);
 });
 
-// **** Export pour les tests ou réutilisation dans d'autres scripts **** //
 export default app;
