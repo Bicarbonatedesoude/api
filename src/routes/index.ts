@@ -1,23 +1,42 @@
-import { Router } from 'express';
-import express from 'express';
-import AnimalRoutes from './AnimalRoutes';
+import { Router, Request, Response, NextFunction } from 'express';
+import jetValidator from 'jet-validator';
 import Paths from '../common/Paths';
+import AnimalRoutes from '../routes/AnimalRoutes';
+import HttpStatusCodes from '../common/HttpStatusCodes';
 
-const app = express();
-const port = 3000;
-const router = Router();
+// **** Variables **** //
 
-// Ajoutez vos routes ici
-router.use('/animaux', AnimalRoutes);
+const apiRouter = Router(),
+      validate = jetValidator();
 
-export default router
-// Middleware
-app.use(express.json());
+// Middleware de validation pour Animal
+function validateAnimal(req: Request, res: Response, next: NextFunction) {
+    if (!req.body || !req.body.animal) {
+        res.status(HttpStatusCodes.BAD_REQUEST)
+           .send({ error: 'Données animal requises' })
+           .end();
+        return;
+    }
+    next();
+}
 
-// Routes principales
-app.use(Paths.Animal.Base, AnimalRoutes);
+// Routes pour les animaux
+const animalRouter = Router();
+animalRouter.get(Paths.Animal.Get, AnimalRoutes.getAll);
+animalRouter.get(Paths.Animal.GetByNom, AnimalRoutes.getById);
+animalRouter.get(Paths.Animal.GetByPoids, AnimalRoutes.getByName);
+animalRouter.post(Paths.Animal.Add, validateAnimal, AnimalRoutes.add);
+animalRouter.put(Paths.Animal.Update, validateAnimal, AnimalRoutes.update);
+animalRouter.delete(Paths.Animal.Delete, validate(['id', 'string', 'params']), AnimalRoutes.delete);
 
-// Démarrer le serveur
-app.listen(port, () => {
-  console.log(`Le serveur est en cours d'exécution sur http://localhost:${port}`);
+// Ajout des routes pour les animaux dans l'API principale
+apiRouter.use(Paths.Animal.Base, animalRouter);
+
+// Route de base pour vérifier le statut de l'API
+apiRouter.get(Paths.Base, (req: Request, res: Response) => {
+    res.json({ message: "Bienvenue sur l'API 2e Chance!" });
 });
+
+// **** Export default **** //
+
+export default apiRouter;

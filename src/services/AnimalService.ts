@@ -34,7 +34,7 @@ async function obtenirAnimalParId(id: string): Promise<IAnimal | null> {
 
 async function obtenirAnimalParNom(nom: string): Promise<IAnimal | null> {
   try {
-    const animal = await AnimalRepo.getOneNom(nom);
+    let animal = await AnimalRepo.getOneNom(nom);
     if (!animal) {
       throw new RouteError(HttpStatusCodes.NOT_FOUND, ANIMAL_NON_TROUVE_ERR);
     }

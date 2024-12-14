@@ -3,7 +3,7 @@ import mongoose, { Schema, model} from 'mongoose';
 // Interface pour le vaccin
 interface IVaccin {
   vaccin: string;
-  dateVaccin: Date;  // Garder le type `Date` pour correspondre au schéma
+  dateVaccin: Date; 
 }
 
 // Interface pour l'animal
@@ -16,8 +16,8 @@ export interface IAnimal {
   poids: number;
   sterilise: boolean;
   dateNaissance: Date;
-  historiqueVaccins?: IVaccin[];  // Optionnel pour les animaux sans historique
-  observations?: string;  // Optionnel
+  historiqueVaccins?: IVaccin[];  
+  observations?: string;  
 }
 
 // Schéma pour l'historique des vaccins
